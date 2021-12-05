@@ -113,7 +113,7 @@ if __name__ == '__main__':
 
 	while True:
 		ff_opts = webdriver.FirefoxOptions()
-		# ff_opts.add_argument('--headless')
+		ff_opts.add_argument('--headless')
 		ff = webdriver.Firefox(options=ff_opts)
 		try:
 			look_for_appointments(ff, in_place='Monterrey')
