@@ -102,7 +102,7 @@ def look_for_appointments(ff: webdriver.Firefox, in_place: str):
 		print(asc_appointment, f'scheduled for ASC appointment, {in_place} ASC')
 		ff.find_element_by_name('commit').click()
 		ff.find_element_by_link_text('Confirmar').click()
-		send_email(to=CONFIG_JSON['notification_email'], txt_msg=f'booked appointments! consulate: {consulate_appointment} asc: {asc_appointment}')
+		send_email(to=CONFIG_JSON['notification_email'], content=f'booked appointments! consulate: {consulate_appointment} asc: {asc_appointment}')
 	else:
 		print(f' | was after scheduled appt ({scheduled_consulate_appointment})')
 
@@ -124,5 +124,6 @@ if __name__ == '__main__':
 			break
 		except Exception as e:
 			print(traceback.format_exc())
+
 		ff.close()
-		time.sleep(45)
+		time.sleep(5 * 60) # 5 min
